@@ -16,9 +16,8 @@ public class Knapsack {
 		this.values = values;
 		this.knapsackTable = new int[numOfItems + 1][capacityOfKnapsack + 1];
 	}
-
+	
 	public int solve() {
-
 		for (int w = 0; w <= capacityOfKnapsack; w++) {
 			knapsackTable[0][w] = 0;
 		}
@@ -26,7 +25,6 @@ public class Knapsack {
 			knapsackTable[i][0] = 0;
 		}
 
-		// time complexity: O(N*W)
 		for (int i = 1; i <= numOfItems; i++) {
 			for (int w = 1; w <= capacityOfKnapsack; w++) {
 
@@ -40,7 +38,6 @@ public class Knapsack {
 				knapsackTable[i][w] = Math.max(notTakingItem, takingItem);
 			}
 		}
-
 		totalValue = knapsackTable[numOfItems][capacityOfKnapsack];
 		return totalValue;
 	}
